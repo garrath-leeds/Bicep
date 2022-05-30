@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "parameters": {
+    "vmSize": {
+      "value": "Standard_D2as_v4"
+    },
+    "vmPassword": {
+      "value": "<change>"
+    },
+    "vmUser": {
+      "value": "azureuser"
+    },
+    "userassignedIdentity": {
+      "value": "/subscriptions/2f7bd7c9-4d79-45a8-87ee-390e82f6683a/resourceGroups/MEL0205-JANIT-nodes/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MEL0205-JANIT-agentpool"
+    },
+    "maxSpotPrice": {
+      "value": 0.015
+    },
+    "vmLocation": {
+      "value": "Australia Southeast"
+    },
+    "vmName": {
+      "value": "MEL0205-TEST-02"
+    }
+  },
+  "contentVersion": "1.0.0.0"
+}

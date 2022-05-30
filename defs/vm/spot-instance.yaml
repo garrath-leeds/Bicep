@@ -1,0 +1,26 @@
+subscription: Jan IT
+resourceGroup: Default-VM-AustraliaSoutheast
+tags:
+    Environment: Jan IT
+vm:
+  '$schema': https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
+  contentVersion: 1.0.0.0
+  parameters:
+    vmName:
+      value: MEL0205-TEST-02
+    subnetId:
+      value: /subscriptions/2f7bd7c9-4d79-45a8-87ee-390e82f6683a/resourceGroups/Default-Networking/providers/Microsoft.Network/virtualNetworks/VNET-MEL0205/subnets/Core
+    vmUser: 
+      value: azureuser
+    vmPassword:
+      value: R6Dq5JvX58xSPinzZ7SatdQpyrruCAdW
+    vmSize: 
+      value: Standard_D4s_v3
+    vmLocation: 
+      value: 'Australia Southeast'
+    maxSpotPrice: 
+      value: '0.04'
+    userassignedIdentity: 
+      value: /subscriptions/2f7bd7c9-4d79-45a8-87ee-390e82f6683a/resourceGroups/MEL0205-JANIT-nodes/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MEL0205-JANIT-agentpool
+
+ 

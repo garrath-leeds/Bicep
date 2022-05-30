@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "parameters": {
+    "vmSize": {
+      "value": "Standard_D4s_v3"
+    },
+    "vmPassword": {
+      "value": "R6Dq5JvX58xSPinzZ7SatdQpyrruCAdW"
+    },
+    "vmUser": {
+      "value": "azureuser"
+    },
+    "subnetId": {
+      "value": "/subscriptions/2f7bd7c9-4d79-45a8-87ee-390e82f6683a/resourceGroups/Default-Networking/providers/Microsoft.Network/virtualNetworks/VNET-MEL0205/subnets/Core"
+    },
+    "userassignedIdentity": {
+      "value": "/subscriptions/2f7bd7c9-4d79-45a8-87ee-390e82f6683a/resourceGroups/MEL0205-JANIT-nodes/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MEL0205-JANIT-agentpool"
+    },
+    "maxSpotPrice": {
+      "value": "0.04"
+    },
+    "vmLocation": {
+      "value": "Australia Southeast"
+    },
+    "vmName": {
+      "value": "MEL0205-TEST-02"
+    },
+    "script": {
+      "value": "ZQBjAGgAbwAgACIAdABlAHMAdAAiACAAPgAgAC8AdABtAHAALwB0AGUAcwB0AC4AdAB4AHQA"
+    }
+  },
+  "contentVersion": "1.0.0.0"
+}
