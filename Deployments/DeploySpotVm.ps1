@@ -2,7 +2,16 @@
 
 $d = Get-Content ../defs/vm/spot-instance.yaml | ConvertFrom-Yaml
 
-$b = [System.Text.Encoding]::Unicode.GetBytes((Get-Content ./test.sh -Raw))
+$baseScript = (Get-Content ./scripts/test.sh -Raw)
+
+foreach ( $file in Get-ChildItem './scripts/dynamic'){
+    $baseScript += "echo `"$((((Get-Content $file.fullname) -join '\n').replace('"','\"')).replace('$','\$'))`" >> /tmp/$($file.name)"
+    
+    $baseScript += "`n pwsh /tmp/$($file.name) &"
+}
+
+$b = [System.Text.Encoding]::Unicode.GetBytes($baseScript)
+
 $d.vm.parameters.script =@{value=[Convert]::ToBase64String($b)}
 
 $d.vm | ConvertTo-Json -Depth 20 > 'parameters.json'

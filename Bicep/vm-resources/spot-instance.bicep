@@ -16,6 +16,16 @@ param tags object
 
 param subnetId string //"/subscriptions/2f7bd7c9-4d79-45a8-87ee-390e82f6683a/resourceGroups/Default-Networking/providers/Microsoft.Network/virtualNetworks/VNET-MEL0205/subnets/Core"
 
+// resource storageaccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+//   name: '${vmName}-sa'
+//   location: vmLocation
+//   kind: 'StorageV2'
+//   sku: {
+//     name: 'Standard_LRS'
+//   }
+// }
+
+
 resource networkInterface 'Microsoft.Network/networkInterfaces@2020-11-01' = {
   name: '${vmName}-nic'
   location: vmLocation
