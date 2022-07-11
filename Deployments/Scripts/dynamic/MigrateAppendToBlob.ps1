@@ -10,7 +10,7 @@ $subscription = "Jan ADS"
 $resourceGroupName = "default-storage-australiasoutheast"
 $storageAccountName = "mel0204log"
 $azcopyLocation = "/tmp/azcopy/azcopy_linux_amd64_10.15.0"
-$processBefore = get-date '2022-01-01'
+$processBefore =  get-date '2021-04-01' #(get-date).AddDays(-60)
 $includeContainers = @() #@("insights-logs-probehealthstatusevents")
 $excludeContainers = @("appinsights-continuousexport")
 

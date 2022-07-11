@@ -27,7 +27,7 @@ if ( !(test-path $output ) ){
     New-Item $output -ItemType Directory
 }
 $archiveContainer = "tablelogsarchive"
-$processBefore = get-date '2021-01-01'
+$processBefore = get-date '2021-04-01'
 $storageAccount = Get-AzStorageAccount -ResourceGroup $resourceGroupName -StorageAccountName $storageAccountName
 $rowTables = 10000
 $tables = Get-AzStorageTable -Context $storageAccount.Context
@@ -36,8 +36,8 @@ function Get-StepTime(){
     "   Time $(get-date)"
     if ( $global:start ){
         $time = (get-date) - $global:start
-        if ( $time.TotalSeconds -gt 0 ){
-            $elapsedTime = "$($time.TotalSeconds) minutes"
+        if ( $time.TotalSeconds -gt 60 ){
+            $elapsedTime = "$($time.TotalMinutes) minutes"
         }
         else {
             $elapsedTime = "$($time.TotalSeconds) seconds"
@@ -80,7 +80,7 @@ foreach ( $table in $tables ) {
         Get-StepTime
         "   Deleting rows..."
         if ( $upload ){
-            $delete = $rows | ForEach-Object -ThrottleLimit 15 -Parallel {
+            $delete = $rows | ForEach-Object -ThrottleLimit 20 -Parallel {
                 if ( -not ( $HOME) ){
                     "Setting Home variable: current $HOME"
                     Set-Variable HOME '/root' -Force
