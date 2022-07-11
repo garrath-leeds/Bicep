@@ -22,5 +22,10 @@ vm:
       value: '0.04'
     userassignedIdentity: 
       value: /subscriptions/2f7bd7c9-4d79-45a8-87ee-390e82f6683a/resourceGroups/MEL0205-JANIT/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MEL0205-JANIT-StorageManagement
+    diskDeleteOption:
+      value: 'Delete'
+    nicDeleteOption: 
+      value: 'Delete'
+    
 
  
