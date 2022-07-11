@@ -11,6 +11,8 @@ param userassignedIdentity string // '/subscriptions/{subscriptionId}/resourceGr
 param script string //base64 of script. maximum of 256 kb
 // nic
 param tags object
+param diskDeleteOption string
+param nicDeleteOption string
 
 // param sshPrincipalId string
 
@@ -77,12 +79,16 @@ resource vm 'Microsoft.Compute/virtualMachines@2021-11-01' = {
         name: '${vmName}_OS'
         caching: 'ReadWrite'
         createOption: 'FromImage'
+        deleteOption: diskDeleteOption
       }
     }
     networkProfile: {
       networkInterfaces: [
         {
           id: networkInterface.id
+          properties: { 
+            deleteOption: nicDeleteOption
+          } 
         }
       ]
     }
@@ -140,15 +146,8 @@ resource vmRunScripts 'Microsoft.Compute/virtualMachines/extensions@2020-06-01' 
     typeHandlerVersion: '2.1'
     autoUpgradeMinorVersion: true
     settings: {
-      // skipDos2Unix: false
-      // fileUris: [
-      //   'https://gist.githubusercontent.com/daveRendon/72986871085786d04d0cdc2b1065355b/raw/34b2a4b5e05dc32f695c8236c89a2c62ce6213ca/install_apache.sh'
-      // ]
       script: script
     }
-    // protectedSettings: {
-    //   commandToExecute: 'sh install_apache.sh'
-    // }
   }
 }
 
