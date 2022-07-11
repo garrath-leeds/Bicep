@@ -2,13 +2,18 @@
 
 $d = Get-Content ../defs/vm/spot-instance.yaml | ConvertFrom-Yaml
 
-$baseScript = (Get-Content ./scripts/test.sh -Raw)
+$baseScript = (Get-Content ./scripts/startup.sh -Raw)
+
+$dynamicScript = ""
 
 foreach ( $file in Get-ChildItem './scripts/dynamic'){
-    $baseScript += "echo `"$((((Get-Content $file.fullname) -join '\n').replace('"','\"')).replace('$','\$'))`" >> /tmp/$($file.name)"
+    $baseScript += "`necho `"$((((Get-Content $file.fullname) -join '\n').replace('"','\"')).replace('$','\$'))`" > /tmp/$($file.name)"
     
-    $baseScript += "`n pwsh /tmp/$($file.name) &"
+    $dynamicScript += "\n pwsh /tmp/$($file.name) &"
 }
+$baseScript += "`necho `"$((((Get-Content "./Scripts/CleanupScript.ps1") -join '\n').replace('"','\"')).replace('$','\$'))`" > /tmp/CleanupScript.ps1"
+
+$baseScript += "`n echo `"$dynamicScript \n wait \n pwsh /tmp/CleanupScript.ps1`" > /tmp/dynamic.sh `n chmod +x /tmp/dynamic.sh `n /tmp/dynamic.sh &"
 
 $b = [System.Text.Encoding]::Unicode.GetBytes($baseScript)
 
