@@ -1,0 +1,23 @@
+resourceGroup: DefaultResourceGroup-Sentinel
+tags: 
+  Environment: Infrastructure
+workflow:
+  '$schema': https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
+  contentVersion: 1.0.0.0
+  parameters:
+    location:
+      value: Australia Southeast
+    automationName:
+      value: PotentialMalwareUploaded-TR
+    logicAppName:
+      value: Ask-Remove-MalwareBlob
+    logicAppResourceGroupName:
+      value: DefaultResourceGroup-Sentinel
+    alertSettings: #causing errors, bypassed for now
+      value:
+        expectedValue:
+          value: 'Potential malware uploaded to a storage blob container'
+        operator:
+          value: 'Equals'
+        jpath:
+          value: 'AlertDisplayName'

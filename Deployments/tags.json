@@ -1,11 +1,11 @@
 {
+  "contentVersion": "1.0.0.0",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "parameters": {
     "tags": {
       "value": {
         "Environment": "Jan IT"
       }
     }
-  },
-  "contentVersion": "1.0.0.0",
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#"
+  }
 }

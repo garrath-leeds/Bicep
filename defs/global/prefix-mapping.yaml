@@ -1,0 +1,5 @@
+regionMapping:
+    "Australia East": SYD
+    "Australia SouthEast": MEL
+subscriptionMapping:
+    Infrastructure: "0245"
